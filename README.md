@@ -1,6 +1,6 @@
 # DesertRush Project
 -----------------------------------
-#A Platformer made with Phaser 3 Webpack Template
+A Platformer made with Phaser 3 Webpack Template
 this is version 1.2beta
 
 ________________________________________________
