@@ -1,0 +1,15 @@
+{
+	"platformGround": {
+		"platform": "position: [x: 0, y: 560, id: 1]",
+		"platform2": "position:[x:900,y:560,id:2]"
+	},
+
+	"platformLedge": {
+		"platform": "position: [x: Phaser.Math.Between(80, 300), y: Phaser.Math.Between(80, 300), id: 1]",
+		"platform2": "position:[x:Phaser.Math.Between(80, 300),y:Phaser.Math.Between(80, 300),id:2]"
+	},
+    "platfromGroundLedge": {
+		"platform": "position: [x: Phaser.Math.Between(80, 300), y: Phaser.Math.Between(80, 300), id: 1]",
+		"platform2": "position:[x:Phaser.Math.Between(80, 300),y:Phaser.Math.Between(80, 300),id:2]"
+	}
+}

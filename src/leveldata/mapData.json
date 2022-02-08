@@ -1,0 +1,38 @@
+    
+    {
+    "platforms":[
+        {
+            "id": 1,
+            "name": "platformGround1",
+            "texture": "sand_platform_ground1",
+            "position": {
+                "xMin": 0,
+                "xMax": 0,
+                "yMin": 560,
+                "yMax": 560
+            }
+        },
+        {
+            "id": 2,
+            "name": "platformGround2",
+            "texture": "sand_platform_ground",
+            "position": {
+                "xMin": 900,
+                "xMax": 900,
+                "yMin": 560,
+                "yMax": 560
+            }
+        },
+        {
+            "id": 3,
+            "name": "platformLedge",
+            "texture": "sand_platform_ledge",
+            "position": {
+                "xMin": 80,
+                "xMax": 300,
+                "yMin": 80,
+                "yMax": 300
+            }
+        }
+    ]
+}
