@@ -5,7 +5,7 @@ import groundSandBrokenImg from './assets/ground_sand_broken.png';
 import groundSandBrokenWall from './assets/ground_sand_broken_wall.png'
 import playerSpriteSheet from './assets/characterSheet.png';
 //import Platforms from '../src/game/Platforms'
-import Platforms from '../src/game/platform'
+//import Platforms from '../src/game/platform'
 import GameOver from './scenes/GameOver'
 import BootScene from './scenes/BootScene';
 import TitleScene from './scenes/TitleScene';
@@ -169,6 +169,30 @@ class Player extends Phaser.Physics.Arcade.Sprite{
             }*/
     }   
 }
+class Platforms extends Phaser.GameObjects.Sprite{
+    constructor(scene,id, type, x, y, width, height, texture ){
+        this.scene = scene;
+        this.id = id;
+        this.type = type;
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.texture = texture;
+        
+        this.platform = {
+            scene: GameScene,
+            id: mapData`${"platforms{id}"}`,
+            type: mapData`${'platforms{"name"}'}`,
+            x: this.platform.mapData`${'platforms["postion{"xMin",XMax}"]'}`,
+            y: this.platform.mapData`${'platforms["postion{"yMin",yMax}"]'}`,
+            texture: this.scene.add.sprite(0, 0, 'platform', './assets/ground_sand_broken.png')
+        },
+            this.setSize(this.platform.width, this.platform.height),
+            this.scene.add(this.platform)
+    }
+}
+
 class GameScene extends Phaser.Scene
 {
     constructor(scene) {
@@ -216,11 +240,11 @@ class GameScene extends Phaser.Scene
 			/** @type {Phaser.Physics.Arcade.StaticBody} */
 			const body = platform.body
 			body.updateFromGameObject()
-		}
+		}/*
        this.mapData = function(level) {
             this.level = level;
         }
-        mapLevel = new mapData(this.platforms[0]);
+        const mapLevel = new mapData(this.platforms[0]);
         mapLevel.level;
         for (const pdata of this.mapData.platforms) {
             const x = (pdata.position.xMax - pdata.position.xMin) * Math.random() + pdata.position.xMin;
@@ -230,6 +254,33 @@ class GameScene extends Phaser.Scene
             const body = platform.body
             body.updateFromGameObject()
           }
+            */
+
+        function getMapping(platform, position){
+            this.platform = mapData`${"platforms[${id}]"}`;
+            this.pos = mapData`${"platforms[${position}]"}`;
+            this.add.platformLayer = platform.mapData`${"platforms[]"}}`;
+        }
+        
+        let platformMapping = new getMapping(this.platforms`${"id[0]"}`, 200, 200, 200);
+        this.platform = this.physics.add.staticGroup(
+          new Platforms(
+            this,
+            platformMapping.type,
+            platformMapping.pos.x,
+            platformMapping.pos.y,
+            platformMapping.pos.width,
+            platformMapping.pos.height
+          )
+        );
+        
+        for (const pdata of this.Platforms`${mapData.platforms}`) { 
+            const createPlatform = `${platformLayer}`;
+            const type = this.platform.type = `${mapData.name}`
+            const x = (pdata.position.xMax - pdata.position.xMin) * Math.random() + pdata.position.xMin;
+            const y = (pdata.position.yMax - pdata.position.yMin) * Math.random() + pdata.position.yMin;
+            const platform = this.platforms.create(this,mapData.name, x, y, 'platform');
+        }
         //-------------collisions-------------------------------------------
         //player = this.physics.add.sprite(100, 100, 'player');
         this.player = this.physics.add.existing(new Player(this, 100, 100, 'player-sprite', 0));
