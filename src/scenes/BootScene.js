@@ -22,12 +22,14 @@ class BootScene extends Phaser.Scene {
             progress.clear();
             progress.fillStyle(0x424983, 1);
             progress.fillRect(0, this.sys.game.config.height / 2, this.sys.game.config.width * value, 60);
+            console.log(parseInt(progress * 100) + '%');
         });
 
         // Register a load complete event to launch the title screen when all files are loaded
-        this.load.on('complete', () => {
+        this.load.on('complete', (key,type,data) => {
             // prepare all animations, defined in a separate file
             makeAnimations(this);
+            console.log(key);
             //progress.destroy();
             const background = this.add.image(1450/2, 775/2, 'background');
             background.setScale(Math.max(1450 / background.width, 775 / background.height))
